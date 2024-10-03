@@ -1,3 +1,4 @@
+import time
 import requests
 import json
 import pandas as pd
@@ -71,11 +72,10 @@ def get_all_data(trad_tag_cd,rlet_tag_cd,minPrice,maxPrice,minPyeong,maxPyeong):
 
     # print(all_data)
     return all_data
-
-
-    
+ 
 def get_real_address(latitude, longitude):
     geolocator = Nominatim(user_agent="myGeocoder")
+    time.sleep(1)  # 요청 간 1초 대기 추가
     location = geolocator.reverse((latitude, longitude), exactly_one=True)
     if location:
         return location.address
